@@ -54,10 +54,11 @@ describe('Recipes', function() {
         };
 
         return chai.request(app)
+            .get('/recipes')
             .then(function(res) {
                 updateData.id = res.body[0].id;
                 return chai.request(app)
-                    .put(`/recipes/${updateData.id}`);
+                    .put(`/recipes/${updateData.id}`)
                     .send(updateData);
             })
             .then(function(res) {
@@ -128,6 +129,7 @@ describe('Shopping List', function() {
     };
 
     return chai.request(app)
+      .get('/shopping-list')
       .then(function(res) {
         updateData.id = res.body[0].id;
         return chai.request(app)
